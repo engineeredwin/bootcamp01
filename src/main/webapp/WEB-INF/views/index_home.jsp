@@ -55,7 +55,7 @@
 </header>
 <div>
 <blockquote><p>
-     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Keep Learning ..</h2>
+     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Keep Learning DevOps..</h2>
      <h3 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Learning is a Treasure that will follow it's Owner Everywhere..</h3> 
 </blockquote>
 <!-- Page content -->
