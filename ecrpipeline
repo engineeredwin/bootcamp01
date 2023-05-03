@@ -8,7 +8,7 @@ pipeline {
         registryCredential = 'ecr:us-east-1:awslogin'
         appRegistry = "251632699502.dkr.ecr.us-east-1.amazonaws.com/gti-ecr"
         vprofileRegistry = "https://251632699502.dkr.ecr.us-east-1.amazonaws.com"
-        cluster = "gti-clutser"
+        clusternm = "gti-clutser"
         service = "gtiapp-service"
     }
 	stages {
@@ -80,9 +80,9 @@ pipeline {
         stage('ecs deploy') {
             steps {
                 withAWS(credentials: 'awslogin', region: 'us-east-1') {
-                    sh 'aws ecs update-service --cluster ${clutser} --service ${service} --force-new-deployment' 
+                    sh 'aws ecs update-service --cluster ${clusternm} --service ${service} --force-new-deployment' 
                 }
             }
         }
-	}
+    }
 }
