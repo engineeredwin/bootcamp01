@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  gtidb:
+    build:
+      context: ./Docker-files/db
+    image: gtiglobal/gtidb:V1
+    container_name: gtidb
+    ports:
+      - "3306:3306"
+    volumes:
+      - gtidbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin1234
+
+  gticache01:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  gtimq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  gtiapp:
+    build:
+      context: ./Docker-files/app
+    image: gitglobal/gtiapp:V1
+    container_name: gtiapp
+    ports:
+      - "8080:8080"
+    volumes:
+      - gtiappdata:/usr/local/tomcat/webapps
+
+  gtiweb:
+    build:
+      context: ./Docker-files/web
+    image: gtiglobal/gtiweb:V1
+    container_name: gtiweb
+    ports:
+      - "80:80"
+volumes:
+  gtidbdata: {}
+  gtiappdata: {}
+
